@@ -42,3 +42,4 @@ and base-3 is mathematically optimal among integer bases.
 ## Documentation
 
 - [Logical Operations](docs/Logical-Operations.md)
+- [Progenitor](docs/Progenitor.md)
