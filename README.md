@@ -38,3 +38,7 @@ In information-theoretic terms:
 
 This makes ternary systems theoretically more information-dense than binary,
 and base-3 is mathematically optimal among integer bases.
+
+## Documentation
+
+- [Logical Operations](docs/Logical-Operations.md)
