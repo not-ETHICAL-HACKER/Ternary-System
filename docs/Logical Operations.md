@@ -14,7 +14,6 @@ This file is context for the ternary system's logical operations
 
 | Symbols | **+** | **0** | **-**  |
 |:-------:|:-----:|:-----:|-------:|
-
 | **+** | `+` | `+` | `0` |
 | **0** | `+` | `0` | `-` |
 | **-** | `0` | `-` | `-` |
@@ -23,7 +22,6 @@ This file is context for the ternary system's logical operations
 
 | Symbols | **+** | **0** | **-**  |
 |:-------:|:-----:|:-----:|-------:|
-
 | **+** | `+` | `0` | `-` |
 | **0** | `0` | `0` | `0` |
 | **-** | `-` | `0` | `+` |
@@ -40,7 +38,6 @@ This file is context for the ternary system's logical operations
 
 | Symbols | **+** | **0** | **-**  |
 |:-------:|:-----:|:-----:|-------:|
-
 | **+** | `+` | `+` | `0` |
 | **0** | `+` | `0` | `-` |
 | **-** | `0` | `-` | `-` |
