@@ -4,11 +4,11 @@ This file is context for the ternary system's logical operations
 
 ## Precedence
 
-|Symbols|Precedence|
-|:-----:|:--------:|
-|**+**|`↑`|
-|**0**|`↑`|
-|**-**|`↑`|
+| Symbol | Meaning | Order |
+|:------:|:-------:|:-----:|
+| `+` | True | Highest |
+| `0` | Neutral | Middle |
+| `-` | False | Lowest |
 
 ## OR Operation
 
@@ -57,5 +57,3 @@ This file is context for the ternary system's logical operations
 | **+** | `+` | `+` | `0` |
 | **0** | `+` | `0` | `-` |
 | **-** | `0` | `-` | `-` |
-
-The values for XOR tables are wrong bcs i havnt decided what to do for this operation
