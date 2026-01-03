@@ -39,6 +39,18 @@ In information-theoretic terms:
 This makes ternary systems theoretically more information-dense than binary,
 and base-3 is mathematically optimal among integer bases.
 
+## Design Decisions
+
+This project intentionally takes several liberties for experimentation and clarity.
+
+A **chomp** is defined as **9 balanced ternary digits (trits)**, forming a fixed-width ternary word:
+
+- 9 trits = \(3^9 = 19,683\) representable states as opposed to the 256 representable states of 1 Byte
+- structured as three 3-trit groups
+- conceptually analogous to the 8-bit byte in binary systems
+
+The term *chomp* is a project-specific abstraction and is not a proposed standard.
+
 ## Documentation
 
 - [Logical Operations](docs/Logical-Operations.md)
