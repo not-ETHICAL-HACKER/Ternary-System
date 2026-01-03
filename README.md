@@ -1,6 +1,10 @@
 # Ternary > Binary
 
-This REPO exists to explore the idea of implementing ternary systems to software and hopefully hardware
+This repository explores the implementation of ternary number systems in software, with the long-term goal of informing potential hardware designs.
+
+This project does **not** claim that modern ternary systems are inherently superior to binary systems in practice.  
+Instead, it investigates the **theoretical limits of information representation and compression**, motivated by the fact that the most efficient radix in information theory is the irrational base *e*.  
+Since base *e* is not physically realizable, base-3 (ternary) is the most efficient practical integer approximation.
 
 ## Binary
 
