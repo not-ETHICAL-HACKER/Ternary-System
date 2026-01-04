@@ -69,7 +69,7 @@ This file is context for the ternary system's logical operations
 | **0** | `+` |
 | **-** | `0` |
 
-> `INC(a) = (a + 1) % 2`
+> `INC(a) = ((a + 2) % 3) - 1`
 
 ## DEC Operation
 
@@ -79,7 +79,7 @@ This file is context for the ternary system's logical operations
 | **0** | `-` |
 | **-** | `+` |
 
-> `DEC(a) = (a - 1) % 2`
+> `DEC(a) = ((a + 1) % 3) - 1`
 
 ## ADD Operation
 
@@ -89,15 +89,15 @@ This file is context for the ternary system's logical operations
 | **0** | `+` | `0` | `-` |
 | **-** | `0` | `-` | `+` |
 
-> `ADD(a,b) = (a + b) % 2`
+> `ADD(a,b) = (a + b) % 3`
 
 ## CAR Operation
 
 | Symbols | **+** | **0** | **-**  |
 |:-------:|:-----:|:-----:|-------:|
-| **+** | `-` | `0` | `0` |
+| **+** | `+` | `0` | `0` |
 | **0** | `0` | `0` | `0` |
-| **-** | `0` | `0` | `+` |
+| **-** | `0` | `0` | `-` |
 
 > `CARRY(a,b)` is + if `a + b > 1`, - if `a + b < -1`, and 0 otherwise.
 
