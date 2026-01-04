@@ -41,21 +41,16 @@ class Ternary(str):
 
 
 class ternary(Ternary):
-    def convert(self) -> Ternary | str:
+    def __init__(self,t_num:str):
+        self.t_num = t_num
+    def convert(self) -> str:
         self.ternary = Ternary(self.num).Convert()
         return self.ternary
 
-    def __or__(self, other: Ternary | int) -> Ternary:
-        a = self.ternary
-        b = Ternary(other).Convert()
-        a, b = align(a=a, b=b)
-        a = [sign*3**i for i, sign in enumerate(a[::-1])]
-        b = [sign*3**i for i, sign in enumerate(b[::-1])]
+    def T_OR(self, other: str) -> str:
+        a,b=align(self.t_num,other)
+        a = "".join(self.OR[(x, y)] for x, y in zip(a, b))
+        print(a)
+        return a
 
-    def T_OR(self, other: str) -> Ternary | str:
-        other = other[2:]
-        self.ternary = self.ternary[2:]
-        return max(other, self.ternary)
-
-
-print(ternary(50).convert())
+print(ternary(ternary(50).convert()).T_OR("++----"))

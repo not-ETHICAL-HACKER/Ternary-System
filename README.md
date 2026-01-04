@@ -53,7 +53,13 @@ A **chomp** is defined as **9 balanced ternary digits (trits)**, forming a fixed
 - structured as three 3-trit groups
 - conceptually analogous to the 8-bit byte in binary systems
 
-The term *chomp* is a project-specific abstraction and is not a proposed standard.
+A **chip** is defined as **3 balanced ternary digits (trits)**, forming a fixed-width ternary word:
+
+- 3 trits = \(3^3 = 27\) representable states as opposed to the 16 representable states of 1 Nibble
+- structured as three 3-trit groups
+- conceptually analogous to the 4-bit Nibble in binary systems
+
+The term *chomp* and *chip* is a project-specific abstraction and is not a proposed standard.
 
 ## Documentation
 
