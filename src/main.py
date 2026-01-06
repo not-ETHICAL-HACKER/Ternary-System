@@ -55,3 +55,50 @@
 
 # print(ternary(ternary(50).convert()).T_OR("++----"))
 #! Commented out bcs i implemented ternary horiibly and looking for better ideas but not deletin for structure
+def align(a: str, b: str) -> tuple[str, str]:
+    while len(a) != len(b):
+        if len(a) > len(b):
+            b = "0" + b
+        elif len(a) < len(b):
+            a = "0" + a
+        else:
+            return a, b
+    return a, b
+
+
+ORDER = {"-": 0, "0": 1, "+": 2}
+REVERSE = {0: "-", 1: "0", 2: "+"}
+
+
+def t_or(T1: str, T2: str) -> str:
+    a, b = align(T1, T2)
+    result = ""
+    for x, y in zip(a, b):
+        result += REVERSE[max(ORDER[x], ORDER[y])]
+    return result
+
+
+def t_and(T1: str, T2: str) -> str:
+    a, b = align(T1, T2)
+    result = ""
+    for x, y in zip(a, b):
+        result += REVERSE[min(ORDER[x], ORDER[y])]
+    return result
+
+
+def t_not(T: str) -> str:
+    result = ""
+    for i in T:
+        if i == "+":
+            result += "-"
+        elif i == "-":
+            result += "+"
+        else:
+            result += "0"
+    return result
+
+def t_nor(T1: str, T2: str) -> str:
+    return t_not(t_or(T1, T2))
+print(t_or("++0--", "0+---"))
+print(t_and("++0--", "0+---"))
+print(t_not("++0--"))
