@@ -66,8 +66,8 @@ def align(a: str, b: str) -> tuple[str, str]:
     return a, b
 
 
-ORDER = {"-": 0, "0": 1, "+": 2}
-REVERSE = {0: "-", 1: "0", 2: "+"}
+ORDER = {"-": -1, "0": 0, "+": 1}
+REVERSE = {-1: "-", 0: "0", 1: "+"}
 
 
 def t_or(T1: str, T2: str) -> str:
@@ -113,7 +113,7 @@ def t_Add(T1:str,T2:str)->str:
     a,b=align(T1,T2)
     Val1 = [ORDER[x] for x in a]
     Val2 = [ORDER[x] for x in b]
-    fin = [((Val1[i]+Val2[i])%3) for i in range(len(Val1))]
+    fin = [((Val1[i]+Val2[i])%3)-1 for i in range(len(Val1))]
     return "".join(REVERSE[x] for x in fin)
 def CAR(T1:str,T2:str)->str:
     a,b=align(T1,T2)
