@@ -99,6 +99,37 @@ def t_not(T: str) -> str:
 
 def t_nor(T1: str, T2: str) -> str:
     return t_not(t_or(T1, T2))
+def t_nand(T1: str, T2: str) -> str:
+    return t_not(t_and(T1, T2))
+def inc(T:str)->str:
+    Val = [ORDER[x] for x in T]
+    fin = [((Val[i]+2)%3)-1 for i in range(len(Val))]
+    return "".join(REVERSE[x] for x in fin)
+def dec(T:str)->str:
+    Val = [ORDER[x] for x in T]
+    fin = [((Val[i]-1)%3)-1 for i in range(len(Val))]
+    return "".join(REVERSE[x] for x in fin)
+def t_Add(T1:str,T2:str)->str:
+    a,b=align(T1,T2)
+    Val1 = [ORDER[x] for x in a]
+    Val2 = [ORDER[x] for x in b]
+    fin = [((Val1[i]+Val2[i])%3) for i in range(len(Val1))]
+    return "".join(REVERSE[x] for x in fin)
+def CAR(T1:str,T2:str)->str:
+    a,b=align(T1,T2)
+    Val1 = [ORDER[x] for x in a]
+    Val2 = [ORDER[x] for x in b]
+    fin = [1 if (Val1[i]+Val2[i])>2 else 0 for i in range(len(Val1))]
+    return "".join(REVERSE[x] for x in fin)
+#def COR
+# Example usage:
+
 print(t_or("++0--", "0+---"))
 print(t_and("++0--", "0+---"))
 print(t_not("++0--"))
+print(t_nor("++0--", "0+---"))
+print(t_nand("++0--", "0+---"))
+print(inc("++0--"))
+print(dec("++0--"))
+print(t_Add("++0--", "0+---"))
+print(CAR("++0--", "0+---"))
