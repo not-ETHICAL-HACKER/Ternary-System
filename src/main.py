@@ -119,9 +119,11 @@ def CAR(T1:str,T2:str)->str:
     a,b=align(T1,T2)
     Val1 = [ORDER[x] for x in a]
     Val2 = [ORDER[x] for x in b]
-    fin = [1 if (Val1[i]+Val2[i])>2 else 0 for i in range(len(Val1))]
+    fin = [1 if (Val1[i]+Val2[i])>1 else 0 for i in range(len(Val1))]
     return "".join(REVERSE[x] for x in fin)
-#def COR
+def COR(T1:str,T2:str)->str:
+    a,b=align(T1,T2)
+    pass
 # Example usage:
 
 print(t_or("++0--", "0+---"))
