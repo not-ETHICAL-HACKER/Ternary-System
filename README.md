@@ -3,8 +3,8 @@
 This repository explores the implementation of ternary number systems in software, with the long-term goal of informing potential hardware designs.
 
 This project does **not** claim that modern ternary systems are inherently superior to binary systems in practice.  
-Instead, it investigates the **theoretical limits of information representation and compression**, motivated by the fact that the most efficient radix in information theory is the irrational base *e*.  
-Since base *e* is not physically realizable, base-3 (ternary) is the most efficient practical integer approximation.
+Instead, it investigates the **theoretical limits of information representation and compression**, motivated by the fact that the most efficient radix in information theory is the irrational base ***e***.  
+Since base ***e*** is not physically realizable, base-3 (ternary) is the most efficient practical integer approximation.
 
 ## Binary
 
@@ -49,17 +49,17 @@ This project intentionally takes several liberties for experimentation and clari
 
 A **chomp** is defined as **9 balanced ternary digits (trits)**, forming a fixed-width ternary word:
 
-- 9 trits = \(3^9 = 19,683\) representable states as opposed to the 256 representable states of 1 Byte
+- 9 trits = \(3<sup>9</sup> = 19,683\) representable states as opposed to the 256 representable states of 1 Byte
 - structured as three 3-trit groups
 - conceptually analogous to the 8-bit byte in binary systems
 
 A **chip** is defined as **3 balanced ternary digits (trits)**, forming a fixed-width ternary word:
 
-- 3 trits = \(3^3 = 27\) representable states as opposed to the 16 representable states of 1 Nibble
+- 3 trits = \(3<sup>3</sup> = 27\) representable states as opposed to the 16 representable states of 1 Nibble
 - structured as three 3-trit groups
 - conceptually analogous to the 4-bit Nibble in binary systems
 
-The term *chomp* and *chip* is a project-specific abstraction and is not a proposed standard.
+The term ***chomp*** and ***chip*** is a project-specific abstraction and is not a proposed standard.
 
 ## Documentation
 
