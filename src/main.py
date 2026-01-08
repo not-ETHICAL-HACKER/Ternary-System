@@ -57,7 +57,7 @@ from typing import Any
 # print(ternary(ternary(50).convert()).T_OR("++----"))
 #! Commented out bcs i implemented ternary horiibly and looking for better ideas but not deletin for structureb
 
-def Wrapper(func: Any) -> Any:
+def func_wrapper(func: Any) -> Any:
     def inner(*args: Any, **kwargs: Any) -> Any:
         print("Calling", func.__name__, end=" -> ")
         result = func(*args, **kwargs)
@@ -65,17 +65,17 @@ def Wrapper(func: Any) -> Any:
     return inner
 
 
-@Wrapper
+@func_wrapper
 def align(a: str, b: str) -> tuple[str, str]:
-    L = max(len(a), len(b))
-    return a.zfill(L), b.zfill(L)
+    length = max(len(a), len(b))
+    return a.zfill(length), b.zfill(length)
 
 
 ORDER = {"-": -1, "0": 0, "+": 1}
 REVERSE = {-1: "-", 0: "0", 1: "+"}
 
 
-@Wrapper
+@func_wrapper
 def t_or(T1: str, T2: str) -> str:
     a, b = align(T1, T2)
     result = ""
@@ -84,7 +84,7 @@ def t_or(T1: str, T2: str) -> str:
     return result
 
 
-@Wrapper
+@func_wrapper
 def t_and(T1: str, T2: str) -> str:
     a, b = align(T1, T2)
     result = ""
@@ -93,7 +93,7 @@ def t_and(T1: str, T2: str) -> str:
     return result
 
 
-@Wrapper
+@func_wrapper
 def t_not(T: str) -> str:
     result = ""
     for i in T:
@@ -106,31 +106,31 @@ def t_not(T: str) -> str:
     return result
 
 
-@Wrapper
+@func_wrapper
 def t_nor(T1: str, T2: str) -> str:
     return t_not(t_or(T1, T2))
 
 
-@Wrapper
+@func_wrapper
 def t_nand(T1: str, T2: str) -> str:
     return t_not(t_and(T1, T2))
 
 
-@Wrapper
+@func_wrapper
 def inc(T: str) -> str:
     Val = [ORDER[x] for x in T]
     fin = [((Val[i]+2) % 3)-1 for i in range(len(Val))]
     return "".join(REVERSE[x] for x in fin)
 
 
-@Wrapper
+@func_wrapper
 def dec(T: str) -> str:
     Val = [ORDER[x] for x in T]
     fin = [((Val[i]) % 3)-1 for i in range(len(Val))]
     return "".join(REVERSE[x] for x in fin)
 
 
-@Wrapper
+@func_wrapper
 def full_add_trit(a: int, b: int, cin: int):
     s = a + b + cin
 
@@ -142,7 +142,7 @@ def full_add_trit(a: int, b: int, cin: int):
         return s, 0
 
 
-@Wrapper
+@func_wrapper
 def t_add(T1: str, T2: str) -> str:
     a, b = align(T1, T2)
     V1 = [ORDER[x] for x in a]
@@ -161,7 +161,7 @@ def t_add(T1: str, T2: str) -> str:
     return "".join(reversed(result))
 
 
-@Wrapper
+@func_wrapper
 def COR(T1: str, T2: str) -> str:
     a, b = align(T1, T2)
     result = ""
