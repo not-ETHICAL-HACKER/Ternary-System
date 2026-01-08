@@ -55,15 +55,9 @@
 
 # print(ternary(ternary(50).convert()).T_OR("++----"))
 #! Commented out bcs i implemented ternary horiibly and looking for better ideas but not deletin for structure
-def align(a: str, b: str) -> tuple[str, str]:
-    while len(a) != len(b):
-        if len(a) > len(b):
-            b = "0" + b
-        elif len(a) < len(b):
-            a = "0" + a
-        else:
-            return a, b
-    return a, b
+def align(a, b):
+    L = max(len(a), len(b))
+    return a.zfill(L), b.zfill(L)
 
 
 ORDER = {"-": -1, "0": 0, "+": 1}
