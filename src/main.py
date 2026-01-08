@@ -1,3 +1,4 @@
+from typing import Any
 # def align(a: str, b: str) -> tuple[str, str]:
 #     while len(a) != len(b):
 #         if len(a) > len(b):
@@ -55,6 +56,14 @@
 
 # print(ternary(ternary(50).convert()).T_OR("++----"))
 #! Commented out bcs i implemented ternary horiibly and looking for better ideas but not deletin for structure
+def Wrapper(func:Any)->Any:
+    def inner(*args:Any, **kwargs:Any)->Any:
+        print("Calling", func.__name__,end=" -> ")
+        result = func(*args, **kwargs)
+        return result
+    return inner
+
+@Wrapper
 def align(a: str, b: str) -> tuple[str, str]:
     while len(a) != len(b):
         if len(a) > len(b):
@@ -69,7 +78,7 @@ def align(a: str, b: str) -> tuple[str, str]:
 ORDER = {"-": -1, "0": 0, "+": 1}
 REVERSE = {-1: "-", 0: "0", 1: "+"}
 
-
+@Wrapper
 def t_or(T1: str, T2: str) -> str:
     a, b = align(T1, T2)
     result = ""
@@ -77,7 +86,7 @@ def t_or(T1: str, T2: str) -> str:
         result += REVERSE[max(ORDER[x], ORDER[y])]
     return result
 
-
+@Wrapper
 def t_and(T1: str, T2: str) -> str:
     a, b = align(T1, T2)
     result = ""
@@ -85,7 +94,7 @@ def t_and(T1: str, T2: str) -> str:
         result += REVERSE[min(ORDER[x], ORDER[y])]
     return result
 
-
+@Wrapper
 def t_not(T: str) -> str:
     result = ""
     for i in T:
@@ -97,35 +106,66 @@ def t_not(T: str) -> str:
             result += "0"
     return result
 
+@Wrapper
 def t_nor(T1: str, T2: str) -> str:
     return t_not(t_or(T1, T2))
+
+@Wrapper
 def t_nand(T1: str, T2: str) -> str:
     return t_not(t_and(T1, T2))
-def inc(T:str)->str:
-    Val = [ORDER[x] for x in T]
-    fin = [((Val[i]+2)%3)-1 for i in range(len(Val))]
-    return "".join(REVERSE[x] for x in fin)
-def dec(T:str)->str:
-    Val = [ORDER[x] for x in T]
-    fin = [((Val[i]-1)%3)-1 for i in range(len(Val))]
-    return "".join(REVERSE[x] for x in fin)
-def t_Add(T1:str,T2:str)->str:
-    a,b=align(T1,T2)
-    Val1 = [ORDER[x] for x in a]
-    Val2 = [ORDER[x] for x in b]
-    fin = [((Val1[i]+Val2[i])%3)-1 for i in range(len(Val1))]
-    return "".join(REVERSE[x] for x in fin)
-def CAR(T1:str,T2:str)->str:
-    a,b=align(T1,T2)
-    Val1 = [ORDER[x] for x in a]
-    Val2 = [ORDER[x] for x in b]
-    fin = [1 if (Val1[i]+Val2[i])>1 else 0 for i in range(len(Val1))]
-    return "".join(REVERSE[x] for x in fin)
-def COR(T1:str,T2:str)->str:
-    a,b=align(T1,T2)
-    pass
-# Example usage:
 
+@Wrapper
+def inc(T: str) -> str:
+    Val = [ORDER[x] for x in T]
+    fin = [((Val[i]+2) % 3)-1 for i in range(len(Val))]
+    return "".join(REVERSE[x] for x in fin)
+
+@Wrapper
+def dec(T: str) -> str:
+    Val = [ORDER[x] for x in T]
+    fin = [((Val[i]) % 3)-1 for i in range(len(Val))]
+    return "".join(REVERSE[x] for x in fin)
+
+@Wrapper
+def full_add_trit(a: int, b: int, cin: int):
+    s = a + b + cin
+
+    if s > 1:
+        return s - 3, 1
+    elif s < -1:
+        return s + 3, -1
+    else:
+        return s, 0
+
+@Wrapper
+def t_add(T1: str, T2: str) -> str:
+    a, b = align(T1, T2)
+    V1 = [ORDER[x] for x in a]
+    V2 = [ORDER[x] for x in b]
+
+    carry = 0
+    result:list[str] = []
+
+    for i in reversed(range(len(V1))):
+        s, carry = full_add_trit(V1[i], V2[i], carry)
+        result.append(REVERSE[s])
+
+    if carry:
+        result.append(REVERSE[carry])
+
+    return "".join(reversed(result))
+
+@Wrapper
+def COR(T1: str, T2: str) -> str:
+    a, b = align(T1, T2)
+    result = ""
+    for x, y in zip(a, b):
+        if x == y:
+            result += "0"
+        else:
+            result += REVERSE[ORDER[x] - ORDER[y]]
+    return result
+# Example usage:
 print(t_or("++0--", "0+---"))
 print(t_and("++0--", "0+---"))
 print(t_not("++0--"))
@@ -133,5 +173,6 @@ print(t_nor("++0--", "0+---"))
 print(t_nand("++0--", "0+---"))
 print(inc("++0--"))
 print(dec("++0--"))
-print(t_Add("++0--", "0+---"))
-print(CAR("++0--", "0+---"))
+print(t_add("++0--", "0+---"))
+print(COR("++0--", "0+---"))
+
